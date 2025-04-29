@@ -7,7 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(Spawner))]
 [RequireComponent(typeof(Exploder))]
 
-public class CubeState : MonoBehaviour
+public class SelectedCube : MonoBehaviour
 {
     private MouseInput _mouseInput;
     private Spawner _spawner;
