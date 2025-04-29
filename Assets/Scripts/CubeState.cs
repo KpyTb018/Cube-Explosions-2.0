@@ -37,7 +37,6 @@ public class CubeState : MonoBehaviour
         else
             _exploder.ExplodeTarget(cube.explosionForce, cube.transform.position, cube.explosionRadius);
 
-
         Destroy(cube.gameObject);
     }
 }

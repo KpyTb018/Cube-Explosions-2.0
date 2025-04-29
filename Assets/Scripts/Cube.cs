@@ -16,7 +16,7 @@ public class Cube : MonoBehaviour
     {
         _rigidBody = GetComponent<Rigidbody>();
         _material = GetComponent<Renderer>().material;
-        _material.color = Random.ColorHSV();       
+        _material.color = Random.ColorHSV();  
     }
 
     public Rigidbody rigidBody => _rigidBody;
