@@ -1,6 +1,7 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Material))]
+[RequireComponent(typeof(Renderer))]
+[RequireComponent(typeof(Rigidbody))]
 
 public class Cube : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class Cube : MonoBehaviour
 
     [SerializeField] private int _separationChance = 100;
 
-    private Material _material;
+    private Renderer _renderer;
     private Rigidbody _rigidBody;
     private int _minSeparationChance = 0;
     private int _maxSeparationChance = 101;
@@ -17,17 +18,13 @@ public class Cube : MonoBehaviour
     private void Awake()
     {
         _rigidBody = GetComponent<Rigidbody>();
-        _material = GetComponent<Renderer>().material;  
+        _renderer = GetComponent<Renderer>();  
     }
 
     private void OnEnable()
     {
         SetRandomColor();
     }
-
-    public Rigidbody rigidBody => _rigidBody;
-    public float explosionRadius => _explosionRadius;
-    public float explosionForce => _explosionForce;
 
     public void UpdateParameters()
     {
@@ -42,8 +39,12 @@ public class Cube : MonoBehaviour
         _explosionRadius += increaseRadius;
     }
 
-    public bool TryDivide() => 
+    public Rigidbody RigidBody => _rigidBody;
+    public float explosionRadius => _explosionRadius;
+    public float explosionForce => _explosionForce;
+
+    public bool IsDivide() => 
         _separationChance >= Random.Range(_minSeparationChance, _maxSeparationChance);
 
-    private void SetRandomColor() => _material.color = Random.ColorHSV();
+    private void SetRandomColor() => _renderer.material.color = Random.ColorHSV();
 }

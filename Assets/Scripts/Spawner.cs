@@ -18,8 +18,8 @@ public class Spawner : MonoBehaviour
     public void CreateCubes(Cube cube)
     {
         int minObjects = 2;
-        int maxObjects = 7;
-        int numberNewObjects = Random.Range(minObjects, maxObjects);
+        int maxObjects = 6;
+        int numberNewObjects = Random.Range(minObjects, maxObjects + 1);
 
         List<Rigidbody> explorableObjects = new();
 
@@ -28,7 +28,7 @@ public class Spawner : MonoBehaviour
         for (int i = 0; i < numberNewObjects; i++)
         {
             Cube newCube = Instantiate(cube, cube.transform.position, Quaternion.identity);
-            explorableObjects.Add(newCube.rigidBody);
+            explorableObjects.Add(newCube.RigidBody);
         }
 
         _exploder.Explode(_explosionForce, cube.transform.position, _explosionRadius, explorableObjects);

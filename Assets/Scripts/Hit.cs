@@ -7,7 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(Spawner))]
 [RequireComponent(typeof(Exploder))]
 
-public class SelectedCube : MonoBehaviour
+public class Hit : MonoBehaviour
 {
     private MouseInput _mouseInput;
     private Spawner _spawner;
@@ -32,7 +32,7 @@ public class SelectedCube : MonoBehaviour
 
     private void TryDivide(Cube cube)
     {
-        if (cube.TryDivide())
+        if (cube.IsDivide())
             _spawner.CreateCubes(cube);
         else
             _exploder.ExplodeTarget(cube.explosionForce, cube.transform.position, cube.explosionRadius);
