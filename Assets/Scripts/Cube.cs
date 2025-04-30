@@ -15,6 +15,10 @@ public class Cube : MonoBehaviour
     private int _minSeparationChance = 0;
     private int _maxSeparationChance = 101;
 
+    public Rigidbody RigidBody => _rigidBody;
+    public float explosionRadius => _explosionRadius;
+    public float explosionForce => _explosionForce;
+
     private void Awake()
     {
         _rigidBody = GetComponent<Rigidbody>();
@@ -37,11 +41,7 @@ public class Cube : MonoBehaviour
         transform.localScale /= reduceScale;
         _explosionForce *= increaseForse;
         _explosionRadius += increaseRadius;
-    }
-
-    public Rigidbody RigidBody => _rigidBody;
-    public float explosionRadius => _explosionRadius;
-    public float explosionForce => _explosionForce;
+    } 
 
     public bool IsDivide() => 
         _separationChance >= Random.Range(_minSeparationChance, _maxSeparationChance);
